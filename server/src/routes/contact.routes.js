@@ -1,7 +1,13 @@
 const express = require("express");
-const router = express.Router();
 const { sendContact } = require("../controllers/contact.controller");
+const validateFields = require("../middlewares/validate.middleware");
 
-router.post("/", sendContact);
+const router = express.Router();
+
+router.post(
+  "/",
+  validateFields(["name", "email", "message"]),
+  sendContact
+);
 
 module.exports = router;
