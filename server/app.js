@@ -3,9 +3,11 @@ const cors = require("cors");
 
 const contactRoutes = require("./routes/contact.routes");
 const hireRoutes = require("./routes/hire.routes");
-
+const connectDB = require("./config/db");
 
 const app = express();
+
+connectDB();
 
 app.use(
   cors({
